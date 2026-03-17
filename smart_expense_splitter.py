@@ -7,6 +7,9 @@ final_bill = total_bill + tip_amount
 per_person = final_bill/num_people
 print("\n--- Bill Summary ---")
 print("Total bill including tip:", final_bill)
+#I can also print it as //{print(f"Total bill including tip: ₹{final_bill:.2f}")}\\ 
+# here f is famat specifier and .2f is for 2 decimal places.
+#ctrl+alt+4 = ₹
 print("Each person should pay:", per_person)
 print("Bill paid by:", paid_by,":" ,final_bill)
 print("Each person should pay:", per_person,"for", paid_by),print(" (except", paid_by, "who paid the full amount)")
