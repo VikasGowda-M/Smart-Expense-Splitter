@@ -1,5 +1,12 @@
-total_buget = float(input("Enter your total budget which you are willing to spend: "))
+print("Welcome to the Smart Expense Splitter!")
+
+
+#taking user input for total budget, total bill.
+total_buget = float(input("Enter the total budget ready to spend: "))
 total_bill = float(input("Enter the total bill amount: "))
+
+
+#taking user input for number of people and validating it.
 num_people = int(input("Enter the number of people: "))
 if num_people <= 0:
     print("Number of people must be greater than zero.Thank you!")
@@ -7,6 +14,8 @@ if num_people <= 0:
 elif num_people == 1:
     print("Only one person is paying the bill. No need to split. Thank you!")
     exit()
+
+
 #discount application:
 discount_percentage = float(input("Enter the discount percentage (if any, otherwise enter 0): "))
 if discount_percentage > 0:
@@ -25,6 +34,8 @@ elif discount_percentage > 100:
 else:
     print("No discount applied.")
 print(f"Total bill amount after discount (if any): {total_bill}")
+
+
 #tip suggestion:
 tip_percentage = 0
 tip_suggestion = input("Do you want any tip suggestions? (yes/no): ").lower()
@@ -61,8 +72,15 @@ tip_amount = total_bill * (tip_percentage / 100)
 final_bill = total_bill + tip_amount
 per_person = final_bill/num_people
 print("\n--- Bill Summary ---\n")
+
+#comparing total budget with final bill:
 if final_bill > total_buget:
-    print("Warning: The total bill including tip exceeds your budget!\n\n")
+    print("Warning: The total bill including tip exceeds your budget!\n")
+elif final_bill < total_buget:
+    print("The total bill including tip is within your budget.\n")
+else:
+    print("The total bill including tip exactly matches your budget.\n")
+       
 per_person = final_bill/num_people
 print("Total bill amount excluding tip:", total_bill)
 print("Tip amount:", tip_amount)
