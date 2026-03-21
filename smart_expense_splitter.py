@@ -36,15 +36,23 @@ while True:
             print("it's paid by single person \n if you entered wrong,please correct it")
             continue
         else:
+            print("Who paid the bill?")
             print("Number     Name")
             for i in range(len(names)):
                 print(f" \n{i+1}. \t  {names[i]}")
             for k in range(1, n1+1):
-                payer = int(input("Enter person number by reffering above,that paid the bill: "))
-                paid_by.append(names[payer-1])
-            print(f"{paid_by} paid the bill")
+                while True:
+                    payer = int(input("Enter person number by reffering above,that paid the bill: "))
+                    if 1 <= payer <= n1:
+                        if names[payer-1] in paid_by:
+                                  print(f"{names[payer-1]} already added to the list of people who paid the bill. Please choose a different person.")
+                        else:
+                                paid_by.append(names[payer-1])
+                                break
+                    else:
+                            print("enter valid input,your value doesn't match the number of names given: ")
+            print(f"{paid_by} paid the bill") 
             break
-
     elif  "no" in ask :
              print("The Bill is paid by single person.....!")
              break
@@ -72,7 +80,6 @@ print(f"Total bill amount after discount (if any): {total_bill}")
 
 
 #tip suggestion:
-total_bill = 10000
 exits = True
 while True:
     tip_percentage = 0
