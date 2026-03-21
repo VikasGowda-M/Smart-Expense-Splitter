@@ -36,6 +36,7 @@ while True:
             print("it's paid by single person \n if you entered wrong,please correct it")
             continue
         else:
+            #who paid thw bill:
             print("Who paid the bill?")
             print("Number     Name")
             for i in range(len(names)):
