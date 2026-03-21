@@ -23,6 +23,26 @@ for i in range(1,num_people+1):
 print("The persons are :",names)
 
 
+#asking whether single paid or multiple paid:
+while True:
+    ask = input("Does bill is paid by multiple person.(yes/no)?").lower()
+    if  "yes" in ask:
+        n1 = int(input(f"How many paid the bill out of {num_people} :"))
+        if n1 == 0 or n1 > num_people:
+            print(f"number of people i.e, {num_people} is lesser than or greater the number of people who are paying bill i.e,{n1} \n Please check once:")
+            continue
+        elif n1 == 1 :
+            print("it's paid by single person \n if you entered wrong,please correct it")
+            continue
+        else:
+            print(f"needs to be updated..:")
+            break
+
+    elif  "no" in ask :
+             print("The Bill is paid by single person.....!")
+             break
+    else:
+        print("Invalid input say.(yes/no)?")
 
 #discount application:
 discount_percentage = float(input("Enter the discount percentage (if any, otherwise enter 0): "))
@@ -44,18 +64,10 @@ else:
 print(f"Total bill amount after discount (if any): {total_bill}")
 
 
-
-#Asking whether one paid or multiple paid:
-
-
-
-
-
-
 #tip suggestion:
 tip_percentage = 0
 tip_suggestion = input("Do you want any tip suggestions? (yes/no): ").lower()
-if tip_suggestion == "yes":
+if  "yes" in tip_suggestion:
     if total_bill < 500:
         print("no need to tip, but you can round up the bill to the nearest 10 or 50 for convenience.")
         suggested_tip = 0
@@ -74,7 +86,7 @@ if tip_suggestion == "yes":
     print(f"Suggested tip amount: {suggested_tip}%")
 
     confirm = input("Is the suggested tip percentage acceptable? (yes/no): ").lower()
-    if confirm == "yes":
+    if "yes" in confirm:
         tip_percentage = suggested_tip
         print(f"Tip percentage set to: {tip_percentage}%")
         print(f"Tip amount based on suggested percentage: {total_bill * (tip_percentage / 100)}")
