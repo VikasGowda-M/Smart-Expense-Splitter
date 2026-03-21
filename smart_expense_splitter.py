@@ -16,6 +16,14 @@ elif num_people == 1:
     exit()
 
 
+#taking each person's name and validating it.
+names = []
+for i in range(1,num_people+1):
+    names.append(input(f"Enter person {i} name :"))
+print("The persons are :",names)
+
+
+
 #discount application:
 discount_percentage = float(input("Enter the discount percentage (if any, otherwise enter 0): "))
 if discount_percentage > 0:
@@ -34,6 +42,14 @@ elif discount_percentage > 100:
 else:
     print("No discount applied.")
 print(f"Total bill amount after discount (if any): {total_bill}")
+
+
+
+#Asking whether one paid or multiple paid:
+
+
+
+
 
 
 #tip suggestion:
