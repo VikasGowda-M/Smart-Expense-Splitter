@@ -24,8 +24,9 @@ print("The persons are :",names)
 
 
 #asking whether single paid or multiple paid:
+paid_by = []
 while True:
-    ask = input("Does bill is paid by multiple person.(yes/no)?").lower()
+    ask = input("Does bill is paid by multiple person.(yes/no)? :").lower()
     if  "yes" in ask:
         n1 = int(input(f"How many paid the bill out of {num_people} :"))
         if n1 == 0 or n1 > num_people:
@@ -35,7 +36,13 @@ while True:
             print("it's paid by single person \n if you entered wrong,please correct it")
             continue
         else:
-            print(f"needs to be updated..:")
+            print("Number     Name")
+            for i in range(len(names)):
+                print(f" \n{i+1}. \t  {names[i]}")
+            for k in range(1, n1+1):
+                payer = int(input("Enter person number by reffering above,that paid the bill: "))
+                paid_by.append(names[payer-1])
+            print(f"{paid_by} paid the bill")
             break
 
     elif  "no" in ask :
@@ -113,7 +120,7 @@ while True:
           break
     else:
             print("Invalid input say.(yes/no)?")
-paid_by = input("Enter the name of the person who paid the bill: ")
+ 
 tip_amount = total_bill * (tip_percentage / 100)
 final_bill = total_bill + tip_amount
 per_person = final_bill/num_people
