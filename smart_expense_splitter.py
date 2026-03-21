@@ -65,36 +65,54 @@ print(f"Total bill amount after discount (if any): {total_bill}")
 
 
 #tip suggestion:
-tip_percentage = 0
-tip_suggestion = input("Do you want any tip suggestions? (yes/no): ").lower()
-if  "yes" in tip_suggestion:
-    if total_bill < 500:
-        print("no need to tip, but you can round up the bill to the nearest 10 or 50 for convenience.")
-        suggested_tip = 0
-    elif 500 <= total_bill < 1000:
-        print("A tip of 3% is suggested for good service.")
-        suggested_tip = 3
-    elif 1000 <= total_bill < 5000:
-        print("A tip of 5% is suggested for good service.")
-        suggested_tip = 5
-    elif 5000 <= total_bill < 10000:
-        print("A tip of 8% is suggested for good service.")
-        suggested_tip = 8
+total_bill = 10000
+exits = True
+while True:
+    tip_percentage = 0
+    tip_suggestion = input("Do you want any tip suggestions? (yes/no): ").lower()
+    if  "yes" in tip_suggestion:
+        if total_bill < 500:
+            print("no need to tip, but you can round up the bill to the nearest 10 or 50 for convenience.")
+            suggested_tip = 0
+        elif 500 <= total_bill < 1000:
+            print("A tip of 3% is suggested for good service.")
+            suggested_tip = 3
+        elif 1000 <= total_bill < 5000:
+            print("A tip of 5% is suggested for good service.")
+            suggested_tip = 5
+        elif 5000 <= total_bill < 10000:
+            print("A tip of 8% is suggested for good service.")
+            suggested_tip = 8
+        else:
+            print("A tip of 20% is suggested for good service.")
+            suggested_tip = 20
+        #confirmation block:
+        print(f"Suggested tip amount: {suggested_tip}%")
+        while True:
+            confirm = input("Is the suggested tip percentage acceptable? (yes/no): ").lower()
+            if "yes" in confirm:
+                tip_percentage = suggested_tip
+                print(f"Tip percentage set to: {tip_percentage}%")
+                print(f"Tip amount based on suggested percentage: {total_bill * (tip_percentage / 100)}")
+                print(f"Total bill including tip: {total_bill + (total_bill * (tip_percentage / 100))}")
+                exits = True
+                break
+            elif "no" in confirm:
+                tip_percentage = float(input("Enter your desired tip percentage: "))
+                print(f"Tip percentage set to: {tip_percentage}%")
+                print(f"Tip amount based on suggested percentage: {total_bill * (tip_percentage / 100)}")
+                print(f"Total bill including tip: {total_bill + (total_bill * (tip_percentage / 100))}")
+                exits = True
+                break
+            else:
+                print("Invalid input. Please enter 'yes' or 'no'.")
+        if exits:
+            break       
+    elif "no" in tip_suggestion:
+          tip_percentage = float(input("Enter your tip percentage (e.g., 15 for 15%): "))
+          break
     else:
-        print("A tip of 20% is suggested for good service.")
-        suggested_tip = 20
-    print(f"Suggested tip amount: {suggested_tip}%")
-
-    confirm = input("Is the suggested tip percentage acceptable? (yes/no): ").lower()
-    if "yes" in confirm:
-        tip_percentage = suggested_tip
-        print(f"Tip percentage set to: {tip_percentage}%")
-        print(f"Tip amount based on suggested percentage: {total_bill * (tip_percentage / 100)}")
-        print(f"Total bill including tip: {total_bill + (total_bill * (tip_percentage / 100))}")
-    else:
-        tip_percentage = float(input("Enter your desired tip percentage: "))
-else:
-    tip_percentage = float(input("Enter the tip percentage (e.g., 15 for 15%): "))
+            print("Invalid input say.(yes/no)?")
 paid_by = input("Enter the name of the person who paid the bill: ")
 tip_amount = total_bill * (tip_percentage / 100)
 final_bill = total_bill + tip_amount
