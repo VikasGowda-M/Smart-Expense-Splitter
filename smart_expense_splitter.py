@@ -22,7 +22,7 @@ while True:
             else:
                 how_many = int(how_many)               
                 for v in range(1,how_many+1):
-                    amt = int(input(f"expense of {v} :"))
+                    amt = int(input(f"expense of item or food {v} :"))
                     expenses.append(float(amt))
                 break
         print("All expenses :",expenses)
@@ -66,7 +66,7 @@ while True:
             print("it's paid by single person \n if you entered wrong,please correct it")
             continue
         else:
-            #who paid thw bill:
+            #who paid the bill:
             print("Who paid the bill?")
             print("Number     Name")
             for i in range(len(names)):
@@ -74,7 +74,7 @@ while True:
             for k in range(1, n1+1):
                 while True:
                     payer = int(input("Enter person number by reffering above,that paid the bill: "))
-                    if 1 <= payer <= n1:
+                    if 1 <= payer <= num_people:
                         if names[payer-1] in paid_by:
                                   print(f"{names[payer-1]} already added to the list of people who paid the bill. Please choose a different person.")
                         else:
@@ -82,7 +82,11 @@ while True:
                                 break
                     else:
                             print("enter valid input,your value doesn't match the number of names given: ")
-            print(f"{paid_by} paid the bill") 
+            records = []
+            for name in paid_by:
+                amt1 = int(input(f"Enter expense paid by {name} :"))
+                records.append((name,amt1))
+            print(records)
             break
     elif  "no" in ask :
             print("The Bill is paid by single person.....!")
@@ -184,3 +188,5 @@ print("Each person should pay:", per_person)
 print("Bill paid by:", paid_by,":" ,final_bill)
 print("Each person should pay:", per_person,"for", paid_by),print(" (except", paid_by, "who paid the full amount)")
 print("Thank you!\nHave a great day!")
+
+
