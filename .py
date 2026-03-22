@@ -29,12 +29,12 @@
 
 
 
-
+total_bill = 6000
 names = ["vik","pri","kis","kar"]
 num_people = 4
 
-paid_by = []
 while True:
+    paid_by = []
     ask = input("Does bill is paid by multiple person.(yes/no)? :").lower()
     if  "yes" in ask:
         n1 = int(input(f"How many paid the bill out of {num_people} :"))
@@ -50,22 +50,37 @@ while True:
             print("Number     Name")
             for i in range(len(names)):
                 print(f" \n{i+1}. \t  {names[i]}")
-            for k in range(1, n1+1):
+            for k in range(1,n1+1):
                 while True:
-                    payer = int(input("Enter person number by reffering above,that paid the bill: "))
-                    if 1 <= payer <= n1:
+                    payer = int(input(f"Enter person number {k} by reffering above,that paid the bill: "))
+                    if 1 <= payer <= num_people:
                         if names[payer-1] in paid_by:
                                   print(f"{names[payer-1]} already added to the list of people who paid the bill. Please choose a different person.")
                         else:
                                 paid_by.append(names[payer-1])
                                 break
                     else:
-                            print("enter valid input,your value doesn't match the number of names given: ")
-            records = []
-            for name in paid_by:
-                amt = int(input(f"Enter expense paid by {name} :"))
-                records.append((name,amt))
-                print(records)
+                        print("enter valid input,your value doesn't match the number of names given: ")
+            
+            while True :
+                records = []
+                total_bill2 = 0
+                for name in paid_by:
+                    amt = int(input(f"Enter expense paid by {name} :"))
+                    total_bill2 += amt
+                    records.append((name,amt))
+                print("Record of person who paid and their expenes",records)
+                if total_bill == total_bill2:
+                    print(f"the total bill of expense {total_bill} and the amount paid by {records} matches.\n the total bill is :{total_bill} ")
+                    break
+                else:
+                    print(f" total_bill is {total_bill} \n sum of expenses paid by each of {records} \n both doesn't match, try again")
+                    exit1 = input(f"if you want to exit ,enter exit ,oryou like to re enter the expenses of {records},enter continue : ")
+                    if "continue" in exit1:
+                         print("RE ENTER")
+                    else:
+                        print("TRY FROM FIRST \nEND..")
+                        exit()
             break
     elif  "no" in ask :
             print("The Bill is paid by single person.....!")
