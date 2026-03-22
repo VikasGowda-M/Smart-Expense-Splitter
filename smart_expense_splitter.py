@@ -57,8 +57,9 @@ while True:
             print(f"{paid_by} paid the bill") 
             break
     elif  "no" in ask :
-             print("The Bill is paid by single person.....!")
-             break
+            print("The Bill is paid by single person.....!")
+            paid_by.append(input("Who paid the bill? Please enter the name: "))
+            break
     else:
         print("Invalid input say.(yes/no)?")
 
