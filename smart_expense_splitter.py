@@ -4,7 +4,9 @@ print("Welcome to the Smart Expense Splitter!")
 #taking user input for total budget, total bill.
 total_buget = float(input("Enter the total budget ready to spend: "))
 total_bill = float(input("Enter the total bill amount: "))
-
+if total_bill == 0:
+     print("The total bill amount cannot be zero. Thank you!")
+     exit()
 
 #taking user input for number of people and validating it.
 num_people = int(input("Enter the number of people: "))
