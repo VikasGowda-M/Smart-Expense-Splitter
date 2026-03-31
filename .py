@@ -1,38 +1,13 @@
-# total_bill = 0
-# while True:
-#     money = input("Do you want to add the expense or will you enter the total_bill,(yes/no)? :")
-#     if "yes" in money:
-#         expenses = []
-#         how_many = input("Enter the number of items or products or food purchased or (done):")
-#         while True:            
-#             if how_many == 0:
-#                 print("your total bill is 0 ")
-#                 exit()
-#             elif "done" in how_many:
-#                 break
-#             else:
-#                 how_many = int(how_many)               
-#                 for v in range(1,how_many+1):
-#                     amt = int(input(f"expense of item or food {v} :"))
-#                     expenses.append(float(amt))
-#                 break
-#         print("All expenses :",expenses)
-#         print("total_bill is :",sum(expenses))
-#         total_bill = sum(expenses)           
-#         break
-#     elif "no" in money:
-#         total_bill = input("enter the total_bill :")
-#         break
-#     else:
-#         print("invalid input ....")
-
-
-
-
-total_bill = 6000
-names = ["vik","pri","kis","kar"]
-num_people = 4
-
+num_people = 6
+names =["vik","pri","ull","kar","kish","pre"]
+# n1 = 2
+# paid_by = ["vik","pri"]
+total_bill = 8000
+final_bill=8000
+per_person = final_bill/num_people
+records = []
+total_buget=7000
+tip_amount=3000
 while True:
     paid_by = []
     ask = input("Does bill is paid by multiple person.(yes/no)? :").lower()
@@ -52,7 +27,7 @@ while True:
                 print(f" \n{i+1}. \t  {names[i]}")
             for k in range(1,n1+1):
                 while True:
-                    payer = int(input(f"Enter person number {k} by reffering above,that paid the bill: "))
+                    payer = int(input(f"Enter person number ({k}) by reffering above,that paid the bill: "))
                     if 1 <= payer <= num_people:
                         if names[payer-1] in paid_by:
                                   print(f"{names[payer-1]} already added to the list of people who paid the bill. Please choose a different person.")
@@ -63,7 +38,7 @@ while True:
                         print("enter valid input,your value doesn't match the number of names given: ")
             
             while True :
-                records = []
+                
                 total_bill2 = 0
                 for name in paid_by:
                     amt = int(input(f"Enter expense paid by {name} :"))
@@ -88,3 +63,104 @@ while True:
             break
     else:
         print("Invalid input say.(yes/no)?")
+    print("perperson:", per_person)
+    not_paid = []
+    for payers in names:
+        if payers not in paid_by:
+            not_paid.append(payers)
+    print("not paid", not_paid)
+    num_not_paid=len(not_paid)
+    print("noof people not paid:", num_not_paid)
+
+
+    # records =[('vik', 6000), ('pri', 2000)]
+    amounts={}
+    for name,amt in records:
+        amounts[name]=amt
+        print(f"{name} paid : {amt}")
+    balance={}
+    for name in names:
+        paid = amounts.get(name,0)
+        balance[name]=paid - per_person
+    print("the Balance List is", balance)
+    print("\n--- Bill Summary ---\n")
+
+#comparing total budget with final bill:
+    if final_bill > total_buget:
+        print("Warning: The total bill including tip exceeds your budget!\n")
+    elif final_bill < total_buget:
+        print("The total bill including tip is within your budget.\n")
+    else:
+        print("The total bill including tip exactly matches your budget.\n")
+        
+    per_person = final_bill/num_people
+    print("Total bill amount excluding tip:", total_bill)
+    print("Tip amount:", tip_amount)
+    print("Total bill including tip:", final_bill)
+    creditors = []
+    debitors=[]
+    for name,amt in balance.items():
+        if amt > 0:
+            creditors.append([name,amt])
+        elif amt<0:
+            debitors.append([name,-amt])
+    print("------settelments--------")
+
+    for d in debitors:
+        for c in creditors:
+            if d[1] == 0:
+                break
+            pay = min(d[1],c[1])
+
+            print(f"{d[0]} should  pay {pay:.2f} to {c[0]}")
+            d[1] -= pay
+            c[1] -= pay
+
+
+
+
+
+
+# print("perperson:", per_person)
+# not_paid = []
+# for payers in names:
+#     if payers not in paid_by:
+#         not_paid.append(payers)
+# print("not paid", not_paid)
+# num_not_paid=len(not_paid)
+# print("noof people not paid:", num_not_paid)
+
+
+# # records =[('vik', 6000), ('pri', 2000)]
+# amounts={}
+# for name,amt in records:
+#     amounts[name]=amt
+#     print(f"{name} paid : {amt}")
+# balance={}
+# for name in names:
+#     paid = amounts.get(name,0)
+#     balance[name]=paid - per_person
+# print("the Balance List is", balance)
+# creditors = []
+# debitors=[]
+# for name,amt in balance.items():
+#     if amt > 0:
+#         creditors.append([name,amt])
+#     elif amt<0:
+#         debitors.append([name,-amt])
+# print("------settelments--------")
+
+# for d in debitors:
+#     for c in creditors:
+#         if d[1] == 0:
+#             break
+#         pay = min(d[1],c[1])
+
+#         print(f"{d[0]} should  pay {pay:.2f} to {c[0]}")
+#         d[1] -= pay
+#         c[1] -= pay
+
+
+
+
+
